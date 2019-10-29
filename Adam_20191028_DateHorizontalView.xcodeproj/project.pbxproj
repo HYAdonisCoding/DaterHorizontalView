@@ -11,14 +11,18 @@
 		7A79762F2366B51700F04DF1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A79762E2366B51700F04DF1 /* SceneDelegate.m */; };
 		7A7976322366B51700F04DF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976312366B51700F04DF1 /* ViewController.m */; };
 		7A7976352366B51700F04DF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7976332366B51700F04DF1 /* Main.storyboard */; };
-		7A7976382366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976362366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodeld */; };
+		7A7976382366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976362366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodeld */; };
 		7A79763A2366B51D00F04DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7976392366B51D00F04DF1 /* Assets.xcassets */; };
 		7A79763D2366B51D00F04DF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A79763B2366B51D00F04DF1 /* LaunchScreen.storyboard */; };
 		7A7976402366B51D00F04DF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A79763F2366B51D00F04DF1 /* main.m */; };
+		7A7976742367D65C00F04DF1 /* HYDateHorizontalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976732367D65C00F04DF1 /* HYDateHorizontalCollectionView.m */; };
+		7A7976772367D87600F04DF1 /* HYDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976762367D87600F04DF1 /* HYDateCollectionViewCell.m */; };
+		7A79767A2367E0D000F04DF1 /* HYCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7976792367E0D000F04DF1 /* HYCollectionViewFlowLayout.m */; };
+		7A79767E236820EF00F04DF1 /* HYDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A79767D236820EF00F04DF1 /* HYDateUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A7976272366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adam_20191028_DatePickerHorizontal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7976272366B51700F04DF1 /* Adam_20191028_DateHorizontalView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adam_20191028_DateHorizontalView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A79762A2366B51700F04DF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A79762B2366B51700F04DF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7A79762D2366B51700F04DF1 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -26,11 +30,19 @@
 		7A7976302366B51700F04DF1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7A7976312366B51700F04DF1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7A7976342366B51700F04DF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A7976372366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adam_20191028_DatePickerHorizontal.xcdatamodel; sourceTree = "<group>"; };
+		7A7976372366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adam_20191028_DateHorizontalView.xcdatamodel; sourceTree = "<group>"; };
 		7A7976392366B51D00F04DF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A79763C2366B51D00F04DF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A79763E2366B51D00F04DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A79763F2366B51D00F04DF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A7976722367D65C00F04DF1 /* HYDateHorizontalCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYDateHorizontalCollectionView.h; sourceTree = "<group>"; };
+		7A7976732367D65C00F04DF1 /* HYDateHorizontalCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYDateHorizontalCollectionView.m; sourceTree = "<group>"; };
+		7A7976752367D87600F04DF1 /* HYDateCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYDateCollectionViewCell.h; sourceTree = "<group>"; };
+		7A7976762367D87600F04DF1 /* HYDateCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYDateCollectionViewCell.m; sourceTree = "<group>"; };
+		7A7976782367E0D000F04DF1 /* HYCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		7A7976792367E0D000F04DF1 /* HYCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		7A79767C236820EF00F04DF1 /* HYDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYDateUtils.h; sourceTree = "<group>"; };
+		7A79767D236820EF00F04DF1 /* HYDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYDateUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +59,7 @@
 		7A79761E2366B51700F04DF1 = {
 			isa = PBXGroup;
 			children = (
-				7A7976292366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal */,
+				7A7976292366B51700F04DF1 /* Adam_20191028_DateHorizontalView */,
 				7A7976282366B51700F04DF1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,12 +67,12 @@
 		7A7976282366B51700F04DF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A7976272366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal.app */,
+				7A7976272366B51700F04DF1 /* Adam_20191028_DateHorizontalView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7A7976292366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal */ = {
+		7A7976292366B51700F04DF1 /* Adam_20191028_DateHorizontalView */ = {
 			isa = PBXGroup;
 			children = (
 				7A79762A2366B51700F04DF1 /* AppDelegate.h */,
@@ -69,22 +81,46 @@
 				7A79762E2366B51700F04DF1 /* SceneDelegate.m */,
 				7A7976302366B51700F04DF1 /* ViewController.h */,
 				7A7976312366B51700F04DF1 /* ViewController.m */,
+				7A79767B236820BF00F04DF1 /* Utils */,
+				7A7976492366BD3C00F04DF1 /* HYDateHorizontalCollectionView */,
 				7A7976332366B51700F04DF1 /* Main.storyboard */,
 				7A7976392366B51D00F04DF1 /* Assets.xcassets */,
 				7A79763B2366B51D00F04DF1 /* LaunchScreen.storyboard */,
 				7A79763E2366B51D00F04DF1 /* Info.plist */,
 				7A79763F2366B51D00F04DF1 /* main.m */,
-				7A7976362366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodeld */,
+				7A7976362366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodeld */,
 			);
-			path = Adam_20191028_DatePickerHorizontal;
+			path = Adam_20191028_DateHorizontalView;
+			sourceTree = "<group>";
+		};
+		7A7976492366BD3C00F04DF1 /* HYDateHorizontalCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7A7976722367D65C00F04DF1 /* HYDateHorizontalCollectionView.h */,
+				7A7976732367D65C00F04DF1 /* HYDateHorizontalCollectionView.m */,
+				7A7976752367D87600F04DF1 /* HYDateCollectionViewCell.h */,
+				7A7976762367D87600F04DF1 /* HYDateCollectionViewCell.m */,
+				7A7976782367E0D000F04DF1 /* HYCollectionViewFlowLayout.h */,
+				7A7976792367E0D000F04DF1 /* HYCollectionViewFlowLayout.m */,
+			);
+			path = HYDateHorizontalCollectionView;
+			sourceTree = "<group>";
+		};
+		7A79767B236820BF00F04DF1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7A79767C236820EF00F04DF1 /* HYDateUtils.h */,
+				7A79767D236820EF00F04DF1 /* HYDateUtils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7A7976262366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal */ = {
+		7A7976262366B51700F04DF1 /* Adam_20191028_DateHorizontalView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A7976432366B51D00F04DF1 /* Build configuration list for PBXNativeTarget "Adam_20191028_DatePickerHorizontal" */;
+			buildConfigurationList = 7A7976432366B51D00F04DF1 /* Build configuration list for PBXNativeTarget "Adam_20191028_DateHorizontalView" */;
 			buildPhases = (
 				7A7976232366B51700F04DF1 /* Sources */,
 				7A7976242366B51700F04DF1 /* Frameworks */,
@@ -94,9 +130,9 @@
 			);
 			dependencies = (
 			);
-			name = Adam_20191028_DatePickerHorizontal;
-			productName = Adam_20191028_DatePickerHorizontal;
-			productReference = 7A7976272366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal.app */;
+			name = Adam_20191028_DateHorizontalView;
+			productName = Adam_20191028_DateHorizontalView;
+			productReference = 7A7976272366B51700F04DF1 /* Adam_20191028_DateHorizontalView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +149,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7A7976222366B51700F04DF1 /* Build configuration list for PBXProject "Adam_20191028_DatePickerHorizontal" */;
+			buildConfigurationList = 7A7976222366B51700F04DF1 /* Build configuration list for PBXProject "Adam_20191028_DateHorizontalView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +162,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A7976262366B51700F04DF1 /* Adam_20191028_DatePickerHorizontal */,
+				7A7976262366B51700F04DF1 /* Adam_20191028_DateHorizontalView */,
 			);
 		};
 /* End PBXProject section */
@@ -149,11 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7976742367D65C00F04DF1 /* HYDateHorizontalCollectionView.m in Sources */,
+				7A79767E236820EF00F04DF1 /* HYDateUtils.m in Sources */,
 				7A7976402366B51D00F04DF1 /* main.m in Sources */,
 				7A7976322366B51700F04DF1 /* ViewController.m in Sources */,
-				7A7976382366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodeld in Sources */,
+				7A7976382366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodeld in Sources */,
 				7A79762C2366B51700F04DF1 /* AppDelegate.m in Sources */,
+				7A79767A2367E0D000F04DF1 /* HYCollectionViewFlowLayout.m in Sources */,
 				7A79762F2366B51700F04DF1 /* SceneDelegate.m in Sources */,
+				7A7976772367D87600F04DF1 /* HYDateCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +335,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2KQ965WEJ;
-				INFOPLIST_FILE = Adam_20191028_DatePickerHorizontal/Info.plist;
+				INFOPLIST_FILE = Adam_20191028_DateHorizontalView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +353,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2KQ965WEJ;
-				INFOPLIST_FILE = Adam_20191028_DatePickerHorizontal/Info.plist;
+				INFOPLIST_FILE = Adam_20191028_DateHorizontalView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,7 +368,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7A7976222366B51700F04DF1 /* Build configuration list for PBXProject "Adam_20191028_DatePickerHorizontal" */ = {
+		7A7976222366B51700F04DF1 /* Build configuration list for PBXProject "Adam_20191028_DateHorizontalView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A7976412366B51D00F04DF1 /* Debug */,
@@ -335,7 +377,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A7976432366B51D00F04DF1 /* Build configuration list for PBXNativeTarget "Adam_20191028_DatePickerHorizontal" */ = {
+		7A7976432366B51D00F04DF1 /* Build configuration list for PBXNativeTarget "Adam_20191028_DateHorizontalView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A7976442366B51D00F04DF1 /* Debug */,
@@ -347,13 +389,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7A7976362366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodeld */ = {
+		7A7976362366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7A7976372366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodel */,
+				7A7976372366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodel */,
 			);
-			currentVersion = 7A7976372366B51800F04DF1 /* Adam_20191028_DatePickerHorizontal.xcdatamodel */;
-			path = Adam_20191028_DatePickerHorizontal.xcdatamodeld;
+			currentVersion = 7A7976372366B51800F04DF1 /* Adam_20191028_DateHorizontalView.xcdatamodel */;
+			path = Adam_20191028_DateHorizontalView.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
