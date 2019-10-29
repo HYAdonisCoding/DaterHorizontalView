@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^HYMonthSelectedBlock)(NSInteger month);
+typedef void(^HYMonthDaySelectedBlock)(NSInteger month, NSInteger day);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSArray *dataArray;
 
 /// 回调
-@property (nonatomic, copy) HYMonthSelectedBlock block;
+@property (nonatomic, copy) HYMonthDaySelectedBlock block;
 
 
 @end

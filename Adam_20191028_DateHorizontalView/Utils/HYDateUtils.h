@@ -27,6 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取年份
 + (NSString *)getYearWith:(NSDate *)date;
 
+
+/// 根据字符串获取日期
+/// @param dateString 日期字符串 格式为: yyyy-MM-dd
++ (NSDate *)getDateWithDateString:(NSString *)dateString;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -100,13 +100,18 @@
     [self.collectionView scrollToItemAtIndexPath:selectedIndexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
 }
 
+- (void)setDataArray:(NSArray *)dataArray {
+    _dataArray = dataArray;
+    [self.collectionView reloadData];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //系统方法返回处于collectionView某坐标处的cell的indexPath
     middleIndexPath = [self.collectionView indexPathForItemAtPoint:CGPointMake(scrollView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.origin.y)];
     NSLog(@"1 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
     [self.collectionView reloadData];
     if (self.block) {
-        self.block(middleIndexPath.section);
+        self.block(middleIndexPath.section, middleIndexPath.row);
     }
 }
 

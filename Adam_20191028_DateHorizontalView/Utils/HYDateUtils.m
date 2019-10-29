@@ -34,6 +34,19 @@
     return array;
 }
 
++ (NSDate *)getDateWithDateString:(NSString *)dateString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //设置转换后的目标日期时区
+    NSTimeZone *toTimeZone = [NSTimeZone defaultTimeZone];
+    //转换后源日期与世界标准时间的偏移量
+    NSInteger toGMTOffset = [toTimeZone secondsFromGMTForDate:[NSDate date]];
+    [dateFormatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT:toGMTOffset]];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    NSLog(@"%@", date);
+    return date;
+}
+
 + (NSString *)getMonthYearWith:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];

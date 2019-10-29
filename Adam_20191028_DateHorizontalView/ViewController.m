@@ -21,7 +21,8 @@
 /// 年
 @property (nonatomic, copy) NSString *year;
 
-
+/// 日期
+@property (nonatomic, strong) NSDate *date;
 /// 时间选择
 @property (nonatomic, strong) HYDateHorizontalCollectionView *dateHorizontalCollectionView;
 @end
@@ -32,14 +33,16 @@
     [super viewDidLoad];
     
     self.year = [HYDateUtils getYearWith:[NSDate date]];
+    self.date = [NSDate date];
     
     HYDateHorizontalCollectionView *view = [[HYDateHorizontalCollectionView alloc] initWithFrame:CGRectMake(10, 400, self.view.frame.size.width-20, 120)];
     view.dataArray = [HYDateUtils getAllDaysWith:[NSDate date]];
     view.selectedIndexPath = [HYDateUtils getIndexPathWith:[NSDate date]];
     
     ViewController * __block weakSelf = self;
-    view.block = ^(NSInteger month) {
-        [weakSelf.dateButton setTitle:[NSString stringWithFormat:@"%02ld.%@", (long)month, self.year] forState:(UIControlStateNormal)];
+    view.block = ^(NSInteger month, NSInteger day) {
+        [weakSelf.dateButton setTitle:[NSString stringWithFormat:@"%02ld.%@", (long)month+1, self.year] forState:(UIControlStateNormal)];
+        weakSelf.date = [HYDateUtils getDateWithDateString:[NSString stringWithFormat:@"%@-%02ld-%02ld", self.year, (long)month+1, (long)day+1]];
     };
     
     [self.view addSubview:view];
@@ -59,6 +62,7 @@
     view.backgroundColor = [UIColor magentaColor];
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 200, self.view.bounds.size.width, 500)];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.date = self.date;
     [view addSubview:datePicker];
     
     UIButton *ensureButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -75,7 +79,7 @@
 - (void)ensureButtonClicked:(UIButton *)sender {
     NSDate *date = self.datePicker.date;
     self.year = [HYDateUtils getYearWith:date];
-    
+    self.date = date;
     [self.dateButton setTitle:[HYDateUtils getMonthYearWith:date] forState:(UIControlStateNormal)];
     NSInteger days = [HYDateUtils getMonthNumberDaysWithDate:date];
     NSLog(@"%ld", (long)days);
