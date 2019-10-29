@@ -1,2 +1,2 @@
-# DatePickerHorizontal
-This is a DatePicker Horizontal View.
+# DaterHorizontalView
+This is a dateView like a horizontal of datePickerView.
