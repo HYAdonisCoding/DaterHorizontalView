@@ -5,16 +5,16 @@
 
 -------
 
-This is a dateView like a horizontal of datePickerView. Choose the date like a ruler.
+This is a dateView like a horizontal of datePickerView. You can choose the date like a ruler.
 
 # Effect preview：
 ![](https://github.com/HYAdonisCoding/DaterHorizontalView/blob/master/20191029Preview.gif)
 
-#Author
+# Author
 
 >[HYAdonisCoding]
 
-#Licenses
+# Licenses
 
 >All source code is licensed under the [MIT License].
 
