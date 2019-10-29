@@ -59,7 +59,7 @@
 
 - (void)dateButtonClicked:(UIButton *)sender {
     UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-    view.backgroundColor = [UIColor magentaColor];
+    view.backgroundColor = [UIColor cyanColor];
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 200, self.view.bounds.size.width, 500)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.date = self.date;
