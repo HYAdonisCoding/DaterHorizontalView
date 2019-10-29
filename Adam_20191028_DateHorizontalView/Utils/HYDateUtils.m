@@ -41,16 +41,16 @@
     NSInteger month=[components month];
     NSInteger day=[components day];
     NSLog(@"Date = %@ ,year = %ld ,month=%ld, day=%ld",date,year,month,day);
-    return [NSString stringWithFormat:@"%d.%d", month, year];
+    return [NSString stringWithFormat:@"%ld.%ld", (long)month, (long)year];
 }
 
 
 + (NSInteger)getMonthWith:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];
-    NSInteger year=[components year];
+//    NSInteger year=[components year];
     NSInteger month=[components month];
-    NSInteger day=[components day];
+//    NSInteger day=[components day];
     return month;
 }
 
@@ -61,8 +61,8 @@
 + (NSInteger)getDayWith:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];
-    NSInteger year=[components year];
-    NSInteger month=[components month];
+//    NSInteger year=[components year];
+//    NSInteger month=[components month];
     NSInteger day=[components day];
     return day;
 }
