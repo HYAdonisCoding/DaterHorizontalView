@@ -16,8 +16,11 @@
 
 /// back
 @property (nonatomic, strong) UIView *backView;
-/// <#Description#>
+/// 日期选择器
 @property (nonatomic, strong) UIDatePicker *datePicker;
+/// 年
+@property (nonatomic, copy) NSString *year;
+
 
 /// 时间选择
 @property (nonatomic, strong) HYDateHorizontalCollectionView *dateHorizontalCollectionView;
@@ -28,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.year = [HYDateUtils getYearWith:[NSDate date]];
     
     HYDateHorizontalCollectionView *view = [[HYDateHorizontalCollectionView alloc] initWithFrame:CGRectMake(10, 400, self.view.frame.size.width-20, 120)];
     view.dataArray = [HYDateUtils getAllDaysWith:[NSDate date]];
@@ -36,14 +39,14 @@
     
     ViewController * __block weakSelf = self;
     view.block = ^(NSInteger month) {
-        [weakSelf.dateButton setTitle:[NSString stringWithFormat:@"%02ld.2019", (long)month] forState:(UIControlStateNormal)];
+        [weakSelf.dateButton setTitle:[NSString stringWithFormat:@"%02ld.%@", (long)month, self.year] forState:(UIControlStateNormal)];
     };
     
     [self.view addSubview:view];
     self.dateHorizontalCollectionView = view;
     
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [button setTitle:@"10.2019" forState:(UIControlStateNormal)];
+    [button setTitle:[HYDateUtils getMonthYearWith:[NSDate date]] forState:(UIControlStateNormal)];
     [button setTitleColor:[UIColor magentaColor] forState:(UIControlStateNormal)];
     button.frame = CGRectMake(0, 540, self.view.bounds.size.width, 50);
     [self.view addSubview:button];
@@ -71,6 +74,8 @@
 
 - (void)ensureButtonClicked:(UIButton *)sender {
     NSDate *date = self.datePicker.date;
+    self.year = [HYDateUtils getYearWith:date];
+    
     [self.dateButton setTitle:[HYDateUtils getMonthYearWith:date] forState:(UIControlStateNormal)];
     NSInteger days = [HYDateUtils getMonthNumberDaysWithDate:date];
     NSLog(@"%ld", (long)days);
