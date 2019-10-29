@@ -24,7 +24,7 @@
     for (int i = 1; i < 13; i++) {
         NSString *firstDay = [year stringByAppendingFormat:@"-%02d-01", i];
         NSDate *date = [dateFormatter dateFromString:firstDay];
-        NSInteger days = [self getInMonthNumberDaysWithDate:date];
+        NSInteger days = [self getMonthNumberDaysWithDate:date];
         NSMutableArray *daysArray = [NSMutableArray arrayWithCapacity:days];
         for (int j = 1; j <= days; j++) {
             [daysArray addObject:[NSString stringWithFormat:@"%02d", j]];
@@ -78,7 +78,7 @@
 }
 
 #pragma mark - 获取一个月的天数
-+ (NSInteger)getInMonthNumberDaysWithDate:(NSDate *)date {
++ (NSInteger)getMonthNumberDaysWithDate:(NSDate *)date {
     NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay
                                    inUnit: NSCalendarUnitMonth

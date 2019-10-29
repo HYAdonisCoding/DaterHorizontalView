@@ -72,7 +72,7 @@
 - (void)ensureButtonClicked:(UIButton *)sender {
     NSDate *date = self.datePicker.date;
     [self.dateButton setTitle:[HYDateUtils getMonthYearWith:date] forState:(UIControlStateNormal)];
-    NSInteger days = [HYDateUtils   :date];
+    NSInteger days = [HYDateUtils getMonthNumberDaysWithDate:date];
     NSLog(@"%ld", (long)days);
     
     self.dateHorizontalCollectionView.dataArray = [HYDateUtils getAllDaysWith:date];

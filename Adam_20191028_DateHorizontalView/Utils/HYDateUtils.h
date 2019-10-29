@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getMonthYearWith:(NSDate *)date;
 
 /// 获取一个月的天数
-+ (NSInteger)getInMonthNumberDaysWithDate:(NSDate *)date;
++ (NSInteger)getMonthNumberDaysWithDate:(NSDate *)date;
 
 @end
 
