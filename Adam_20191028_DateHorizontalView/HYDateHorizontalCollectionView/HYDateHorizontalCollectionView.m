@@ -97,21 +97,34 @@
 }
 
 - (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath {
-    [self.collectionView scrollToItemAtIndexPath:selectedIndexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
+    /// 选择数据后放到中间组显示
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row inSection:selectedIndexPath.section+12];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
 }
 
 - (void)setDataArray:(NSArray *)dataArray {
-    _dataArray = dataArray;
+    /// 创建三组数据,避免边界值不能选择的问题
+    NSMutableArray *mutableArray = dataArray.mutableCopy;
+    [mutableArray addObjectsFromArray:dataArray];
+    [mutableArray addObjectsFromArray:dataArray];
+    _dataArray = mutableArray.copy;
     [self.collectionView reloadData];
 }
 
+#pragma mark -- scrollview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //系统方法返回处于collectionView某坐标处的cell的indexPath
     middleIndexPath = [self.collectionView indexPathForItemAtPoint:CGPointMake(scrollView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.origin.y)];
     NSLog(@"1 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
     [self.collectionView reloadData];
     if (self.block) {
-        self.block(middleIndexPath.section, middleIndexPath.row);
+        NSInteger section = middleIndexPath.section;
+        if (section > 11 && section < 24) {
+            section -= 12;
+        } else if (section >= 24) {
+            section -= 24;
+        }
+        self.block(section, middleIndexPath.row);
     }
 }
 
