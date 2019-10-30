@@ -60,14 +60,14 @@
 - (void)dateButtonClicked:(UIButton *)sender {
     UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
     view.backgroundColor = [UIColor cyanColor];
-    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 200, self.view.bounds.size.width, 500)];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 400)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.date = self.date;
     [view addSubview:datePicker];
     
     UIButton *ensureButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [ensureButton setTitle:@"确定" forState:(UIControlStateNormal)];
-    ensureButton.frame = CGRectMake(0, 700, self.view.bounds.size.width, 40);
+    ensureButton.frame = CGRectMake(0, 600, self.view.bounds.size.width, 40);
     [ensureButton addTarget:self action:@selector(ensureButtonClicked:) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:ensureButton];
     [self.view addSubview:view];

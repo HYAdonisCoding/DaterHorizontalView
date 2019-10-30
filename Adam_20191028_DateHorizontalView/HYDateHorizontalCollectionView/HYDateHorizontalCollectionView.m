@@ -73,7 +73,52 @@
     [backView addSubview:collectionView];
     
     [self.collectionView registerClass:[HYDateCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([HYDateCollectionViewCell class])];
+    
+    /// 增加模糊效果
+    CGFloat space = 10;
+    CGFloat widthRatio = 0.15;
+    CGFloat viewHeight = self.frame.size.height - space;
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:(UIBlurEffectStyleExtraLight)];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.5;
+    effectView.frame = CGRectMake(self.collectionView.frame.origin.x, self.collectionView.frame.origin.y + space, self.frame.size.width * widthRatio, viewHeight);
+    [self addSubview:effectView];
+    
+    UIVisualEffectView *effectView1 = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView1.alpha = 0.5;
+    effectView1.frame = CGRectMake(CGRectGetWidth(self.collectionView.frame)-self.frame.size.width * widthRatio, self.collectionView.frame.origin.y + space, self.frame.size.width * widthRatio, viewHeight);
+    [self addSubview:effectView1];
+    
+    /// 增加渐变效果
+    UIColor *color = [UIColor lightGrayColor];//[UIColor colorWithRed:250/255 green:250/255 blue:250/255 alpha:0.50];
+    CAGradientLayer *viewALayer = [CAGradientLayer layer];
+    viewALayer.frame = effectView1.bounds;
+    viewALayer.colors = [NSArray arrayWithObjects:
+                       (id)[UIColor whiteColor].CGColor,
+                       (id)color.CGColor, nil];
+    viewALayer.startPoint = CGPointMake(0, 0);
+    viewALayer.endPoint = CGPointMake(1, 0);
+    [effectView1.layer addSublayer: viewALayer];
+
+    CAGradientLayer *viewBLayer = [CAGradientLayer layer];
+    viewBLayer.frame = effectView.bounds;
+    viewBLayer.colors = [NSArray arrayWithObjects:
+                       (id)color.CGColor,
+                       (id)[UIColor whiteColor].CGColor, nil];
+    viewBLayer.startPoint = CGPointMake(0, 0);
+    viewBLayer.endPoint = CGPointMake(1, 0);
+    [effectView.layer addSublayer: viewBLayer];
 }
+
+
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *hitView = [super hitTest:point withEvent:event];
+    if([hitView isKindOfClass:[UIVisualEffectView class]]){
+        return self.collectionView;
+    }
+    return hitView;
+}
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.dataArray.count;
@@ -89,9 +134,11 @@
     if (indexPath == middleIndexPath) {
         cell.dateLabel.font = [UIFont boldSystemFontOfSize:18];
         cell.dateLabel.textColor = [UIColor purpleColor];
+        cell.ruleView.hidden = NO;
     } else {
         cell.dateLabel.font = [UIFont systemFontOfSize:13];
         cell.dateLabel.textColor = [UIColor grayColor];
+        cell.ruleView.hidden = YES;
     }
     return cell;
 }

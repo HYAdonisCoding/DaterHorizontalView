@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 日期
 @property (nonatomic, strong) UILabel *dateLabel;
+
+/// 黄色刻度线
+@property (nonatomic, strong) UIView *ruleView;
+
 @end
 
 NS_ASSUME_NONNULL_END

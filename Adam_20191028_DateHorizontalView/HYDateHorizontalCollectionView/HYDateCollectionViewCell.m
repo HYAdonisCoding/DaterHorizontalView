@@ -35,6 +35,12 @@
     self.dateLabel.textColor = [UIColor grayColor];
     [self addSubview:self.dateLabel];
     
+    self.ruleView = [[UIView alloc] initWithFrame:CGRectMake(self.bounds.size.width/2-2.2, 2.5, 4.4, self.bounds.size.height*0.45)];
+    self.ruleView.backgroundColor = [UIColor orangeColor];
+    [self addSubview:self.ruleView];
+    
+    self.ruleView.hidden = YES;
+    
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -47,10 +53,12 @@
     [self.path addLineToPoint:CGPointMake(width/2, height/2.5)];
     
     self.path.lineWidth = 3.0f;
-    [[UIColor blueColor] setStroke];
+    [[UIColor grayColor] setStroke];
     [self.path stroke];
     
     self.path.lineWidth = 1.50f;
+    [[UIColor lightGrayColor] setStroke];
+    
     [self.path moveToPoint:CGPointMake(0, 1)];
     [self.path addLineToPoint:CGPointMake(0, height/5)];
     
