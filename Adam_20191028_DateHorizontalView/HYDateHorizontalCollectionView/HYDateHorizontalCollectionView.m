@@ -9,6 +9,8 @@
 #import "HYDateHorizontalCollectionView.h"
 #import "HYDateCollectionViewCell.h"
 #import "HYCollectionViewFlowLayout.h"
+#import "HYDateUtils.h"
+#import "HYDateView.h"
 
 @interface HYDateHorizontalCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource> {
     CGFloat _offer;
@@ -17,6 +19,18 @@
 
 /** collectionView */
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+/// 时间按钮
+@property (nonatomic, strong) UIButton *dateButton;
+
+/// 年
+@property (nonatomic, copy) NSString *year;
+
+/// 日期
+@property (nonatomic, strong) NSDate *date;
+
+/// 日期控件
+@property (nonatomic, strong) HYDateView *dateView;
 
 @end
 
@@ -30,8 +44,21 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame date:(NSDate *)date dataArray:(NSArray *)dataArray selectedIndexPath:(NSIndexPath *)selectedIndexPath completion:(HYMonthDaySelectedBlock)block {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self makeInterface];
+        self.date = date;
+        self.year = [HYDateUtils getYearWith:date];
+        self.block = block;
+        self.dataArray = dataArray;
+        self.selectedIndexPath = selectedIndexPath;
+    }
+    return self;
+}
+
 - (void)makeInterface {
-    CGRect collectionViewFrame = CGRectMake(0, 10, self.bounds.size.width, self.bounds.size.height-10);
+    CGRect collectionViewFrame = CGRectMake(0, 10, self.bounds.size.width, self.bounds.size.height-10-50);
     
     HYCollectionViewFlowLayout *flowLayout = [[HYCollectionViewFlowLayout alloc] init];
     // 设置UICollectionView为横向滚动
@@ -77,7 +104,7 @@
     /// 增加模糊效果
     CGFloat space = 10;
     CGFloat widthRatio = 0.15;
-    CGFloat viewHeight = self.frame.size.height - space;
+    CGFloat viewHeight = self.collectionView.frame.size.height;
     UIBlurEffect *effect = [UIBlurEffect effectWithStyle:(UIBlurEffectStyleExtraLight)];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
     effectView.alpha = 0.5;
@@ -90,7 +117,7 @@
     [self addSubview:effectView1];
     
     /// 增加渐变效果
-    UIColor *color = [UIColor lightGrayColor];//[UIColor colorWithRed:250/255 green:250/255 blue:250/255 alpha:0.50];
+    UIColor *color = [UIColor lightGrayColor];
     CAGradientLayer *viewALayer = [CAGradientLayer layer];
     viewALayer.frame = effectView1.bounds;
     viewALayer.colors = [NSArray arrayWithObjects:
@@ -108,6 +135,29 @@
     viewBLayer.startPoint = CGPointMake(0, 0);
     viewBLayer.endPoint = CGPointMake(1, 0);
     [effectView.layer addSublayer: viewBLayer];
+    
+    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [button setTitle:[HYDateUtils getMonthYearWith:[NSDate date]] forState:(UIControlStateNormal)];
+    [button setTitleColor:[UIColor magentaColor] forState:(UIControlStateNormal)];
+    button.frame = CGRectMake(0, self.bounds.size.height-50, self.bounds.size.width, 40);
+    [self addSubview:button];
+    self.dateButton = button;
+    [button addTarget:self action:@selector(dateButtonClicked:) forControlEvents:(UIControlEventTouchUpInside)];
+}
+
+- (void)dateButtonClicked:(UIButton *)sender {
+    WK(weakSelf);
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    HYDateView *dateView = [[HYDateView alloc] initWithDate:self.date frame:bounds completion:^(NSDate *date, NSInteger month, NSInteger day, NSString *year, NSString *monthYear) {
+        SG(strongSelf);
+        strongSelf.dataArray = [HYDateUtils getAllDaysWith:date];
+        strongSelf.selectedIndexPath = [HYDateUtils getIndexPathWith:date];
+        [strongSelf.dateButton setTitle:monthYear forState:(UIControlStateNormal)];
+        strongSelf.year = year;
+    }];
+    self.dateView = dateView;
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview: dateView];
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view bringSubviewToFront:dateView];
 }
 
 
@@ -144,7 +194,7 @@
 }
 
 - (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath {
-    /// 选择数据后放到中间组显示
+    /// 选中数据后放到中间组显示
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row inSection:selectedIndexPath.section+12];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
 }
@@ -162,16 +212,18 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //系统方法返回处于collectionView某坐标处的cell的indexPath
     middleIndexPath = [self.collectionView indexPathForItemAtPoint:CGPointMake(scrollView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.origin.y)];
-    NSLog(@"1 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
+//    NSLog(@"1 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
     [self.collectionView reloadData];
+    NSInteger section = middleIndexPath.section;
+    if (section > 11 && section < 24) {
+        section -= 12;
+    } else if (section >= 24) {
+        section -= 24;
+    }
+    [self.dateButton setTitle:[NSString stringWithFormat:@"%02ld.%@", (long)section+1, self.year] forState:(UIControlStateNormal)];
+    self.date = [HYDateUtils getDateWithDateString:[NSString stringWithFormat:@"%@-%ld-%ld", self.year, (long)section+1, middleIndexPath.row+1]];
     if (self.block) {
-        NSInteger section = middleIndexPath.section;
-        if (section > 11 && section < 24) {
-            section -= 12;
-        } else if (section >= 24) {
-            section -= 24;
-        }
-        self.block(section, middleIndexPath.row);
+        self.block(self.date, section, middleIndexPath.row, self.year);
     }
 }
 
@@ -185,14 +237,14 @@
 - (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView{
 
     [self.collectionView scrollToItemAtIndexPath:middleIndexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
-    NSLog(@"2 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
+//    NSLog(@"2 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
 
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint*)targetContentOffset{
 
     [self.collectionView scrollToItemAtIndexPath:middleIndexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
-    NSLog(@"3 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
+//    NSLog(@"3 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
 }
 
 

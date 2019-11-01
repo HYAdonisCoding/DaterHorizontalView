@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HYDateHeader.h"
 
-typedef void(^HYMonthDaySelectedBlock)(NSInteger month, NSInteger day);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 回调
 @property (nonatomic, copy) HYMonthDaySelectedBlock block;
 
+
+/// 刻度尺日期选择器
+/// @param frame frame
+/// @param date 日期
+/// @param dataArray 数据源
+/// @param selectedIndexPath 选中的日期
+/// @param block 回调
+- (instancetype)initWithFrame:(CGRect)frame date:(NSDate *)date dataArray:(NSArray *)dataArray selectedIndexPath:(NSIndexPath *)selectedIndexPath completion:(HYMonthDaySelectedBlock)block;
 
 @end
 
