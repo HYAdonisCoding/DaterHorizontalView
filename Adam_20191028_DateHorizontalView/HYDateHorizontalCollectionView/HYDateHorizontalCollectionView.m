@@ -11,6 +11,7 @@
 #import "HYCollectionViewFlowLayout.h"
 #import "HYDateUtils.h"
 #import "HYDateView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface HYDateHorizontalCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource> {
     CGFloat _offer;
@@ -225,6 +226,8 @@
     if (self.block) {
         self.block(self.date, section, middleIndexPath.row, self.year);
     }
+    
+    [self playSystemSound];
 }
 
 
@@ -247,5 +250,41 @@
 //    NSLog(@"3 中间的cell：第 %ld 组 %ld个", middleIndexPath.section, middleIndexPath.row);
 }
 
+//滚动时不允许确认
+- (BOOL)anySubViewScrolling:(UIView *)view {
+    
+    if ([view isKindOfClass:[UIScrollView class]]) {
+        
+        UIScrollView *scrollView = (UIScrollView *)view;
+        
+        if (scrollView.dragging || scrollView.decelerating) {
+            return YES;
+        }
+    }
+    
+    for (UIView *theSubView in view.subviews) {
+        if ([self anySubViewScrolling:theSubView]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)playSystemSound {
+//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  // 震动
+    // 普通短震，3D Touch 中 Peek 震动反馈
+//    AudioServicesPlaySystemSound(1519);
+    // 普通短震，3D Touch 中 Pop 震动反馈
+    //AudioServicesPlaySystemSound(1520);
+    // 连续三次短震
+    //AudioServicesPlaySystemSound(1521);
+    
+    //kSystemSoundID_UserPreferredAlert   = 0x00001000,
+    //kSystemSoundID_FlashScreen          = 0x00000FFE,
+           // this has been renamed to be consistent
+    //kUserPreferredAlert     = kSystemSoundID_UserPreferredAlert
+    
+    AudioServicesPlaySystemSound(1052);
+}
 
 @end
